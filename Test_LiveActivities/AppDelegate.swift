@@ -2,7 +2,7 @@
 //  AppDelegate.swift
 //  Test_LiveActivities
 //
-//  Created by mac on 2022/11/8.
+//  Created by Mr.C on 2022/11/8.
 //
 
 import UIKit

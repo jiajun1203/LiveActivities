@@ -2,7 +2,7 @@
 //  SceneDelegate.swift
 //  Test_LiveActivities
 //
-//  Created by mac on 2022/11/8.
+//  Created by Mr.C on 2022/11/8.
 //
 
 import UIKit
@@ -50,6 +50,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         (UIApplication.shared.delegate as? AppDelegate)?.saveContext()
     }
 
-
+    func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
+        for context in URLContexts {
+            print(context.url)
+        }
+    }
 }
 
