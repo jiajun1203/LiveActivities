@@ -37,25 +37,36 @@ class ViewController: UIViewController {
         let initialContentState = PizzaDeliveryAttributes.PizzaDeliveryStatus(driverName: "快递小哥 🚴🏻", deliveryTimer: Date()...Date().addingTimeInterval(15 * 60))
                                                   
         do {
+            //启用灵动岛
+            //灵动岛只支持Iphone，areActivitiesEnabled用来判断设备是否支持，即便是不支持的设备，依旧可以提供不支持的样式展示
+            if ActivityAuthorizationInfo().areActivitiesEnabled == true{
+                
+            }
             let deliveryActivity = try Activity<PizzaDeliveryAttributes>.request(
                 attributes: pizzaDeliveryAttributes,
                 contentState: initialContentState,
                 pushType: nil)
-            let pushToken = deliveryActivity.pushToken  //推送令牌 ，发送给服务器，用于推送Live Activities更新
-            print("Requested a pizza delivery Live Activity \(deliveryActivity.id)")
+            //判断启动成功后，获取推送令牌 ，发送给服务器，用于远程推送Live Activities更新
+            //不是每次启动都会成功，当已经存在多个Live activity时会出现启动失败的情况
+            if deliveryActivity.activityState == .active{
+                _ = deliveryActivity.pushToken
+            }
+            print("Current activity id -> \(deliveryActivity.id)")
         } catch (let error) {
-            print("Error requesting pizza delivery Live Activity \(error.localizedDescription)")
+            print("Error info -> \(error.localizedDescription)")
         }
     }
+    
     func updateDeliveryPizza() {
         Task {
             let updatedDeliveryStatus = PizzaDeliveryAttributes.PizzaDeliveryStatus(driverName: "快递小哥 🚴🏻", deliveryTimer: Date()...Date().addingTimeInterval(60 * 60))
-            
+            //此处只有一个灵动岛，当一个项目有多个灵动岛时，需要判断更新对应的activity
             for activity in Activity<PizzaDeliveryAttributes>.activities{
                 await activity.update(using: updatedDeliveryStatus)
             }
         }
     }
+    
     func stopDeliveryPizza() {
         Task {
             for activity in Activity<PizzaDeliveryAttributes>.activities{
@@ -63,6 +74,8 @@ class ViewController: UIViewController {
             }
         }
     }
+    
+    
     func showAllDeliveries() {
         Task {
             for activity in Activity<PizzaDeliveryAttributes>.activities {
@@ -71,3 +84,5 @@ class ViewController: UIViewController {
         }
     }
 }
+//ActivityAuthorizationInfo().areActivitiesEnabled
+//ActivityAuthorizationInfo().activityEnablementUpdates
