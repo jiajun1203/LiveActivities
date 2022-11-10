@@ -1,6 +1,7 @@
-# LiveActivities
-
 手把手实现IOS灵动岛教程。
+
+<img src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/0c68f567ce664e5497f232ac83c54911~tplv-k3u1fbpfcp-zoom-in-crop-mark:3024:0:0:0.image?" width="50%"><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/6e4c39ac487e49f48421ba931a867031~tplv-k3u1fbpfcp-zoom-in-crop-mark:3024:0:0:0.image?" width="50%">
+
 
 详细文档见：[这里是图文教程文档](https://juejin.cn/post/7164296831290048549)
 
