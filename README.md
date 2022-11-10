@@ -2,19 +2,23 @@
 
 手把手实现IOS灵动岛教程。
 
+详细文档见：[这里是图文教程文档](https://juejin.cn/post/7164296831290048549)
+
+欢迎入群交流：939394226
+
 Live Activities 依赖于 Widget 实现 函数和页面，而与Widget不同，Live Activities无法访问网络或接收位置更新，更新Live Activities可以使用ActivityKit和远程推送，同时ActivityKit可以控制Live Activities的开始，更新和结束。
 
 灵动岛的启用由我们进行控制，且一个程序可以实现多个灵动岛，但启用最多展示两个
 
 **灵动岛一共有三种样式展示：**
 
-1. 只有一个Live Activities活动时，在灵动岛的左右两个部分显示信息（紧凑级），点击打开App查看详细信息
+    ① 只有一个Live Activities活动时，在灵动岛的左右两个部分显示信息（紧凑级），点击打开App查看详细信息
 
-2. 同时有多个Live Activities活动时，系统最多展示只两个最小级Live Activities活动，一个将紧贴灵动岛，一个单独展示在圆圈内
-​
-3. 手指按中其中任何一个，系统将展示拓展视图
+    ② 同时有多个Live Activities活动时，系统最多展示只两个最小级Live Activities活动，一个将紧贴灵动岛，一个单独展示在圆圈内
+    ​
+    ③ 手指按中其中任何一个，系统将展示拓展视图
 
-##一个Live Activities可以运行12小时，灵动到运行8小时，到达8小时系统将自动结束并移到锁屏界面，在锁屏界面可以保持4小时，这是涌用户可以移除或达到4小时系统自动移除。
+**一个Live Activities可以运行12小时，灵动到运行8小时，到达8小时系统将自动结束并移到锁屏界面，在锁屏界面可以保持4小时，这是涌用户可以移除或达到4小时系统自动移除。**
 
 灵动岛页面需要实现的部分有4个
 
@@ -27,20 +31,20 @@ Live Activities 依赖于 Widget 实现 函数和页面，而与Widget不同，L
 拓展视图（长按时触发）
 
 4. 灵动岛界面需要实现4个部分。
-    ① 紧凑级   （紧贴灵动岛的左右部分）
-    ② 极小级   （紧贴在灵动岛左侧展示 或 右侧分离展示）
-    ③ 拓展视图  （长按紧凑级或极小级时，展示拓展视图）
-    ④ 锁屏视图  （锁定屏幕时在屏幕底部展示的视图）
+    ① 紧凑级                   （紧贴灵动岛的左右部分）
+    ② 极小级                   （紧贴在灵动岛左侧展示 或 右侧分离展示）
+    ③ 拓展视图                  （长按紧凑级或极小级时，展示拓展视图）
+    ④ 锁屏或不支持灵动岛的设备视图  （锁定屏幕时在屏幕底部展示的视图）
 
 5. 完成上面步骤，Live activity 已经创建好了，启动调用： request(attributes:contentState:pushType:)
 
     灵动岛的活动状态一共有3种：
 
-    active  处于活动中
+        ① active  处于活动中
 
-    ended 已经终止且不会有任何更新，但依旧在锁屏界面展示
+        ② ended 已经终止且不会有任何更新，但依旧在锁屏界面展示
 
-    dismissed 结束且不再展示
+        ③ dismissed 结束且不再展示
 
 6. 更新灵动岛数据（更新的就是在ActivityAttributes中声明的动态数据）：
     方法：update(using:alertConfiguration:)
@@ -89,13 +93,13 @@ Live Activities 依赖于 Widget 实现 函数和页面，而与Widget不同，L
 
 
 7. 结束Activity：
-     方法：end(using:dismissalPolicy:)
+    方法：end(using:dismissalPolicy:)
 
     结束分为两种:
 
-    .default  系统默认，结束后在锁屏界面保留4小时
+        ① .default  系统默认，结束后在锁屏界面保留4小时
 
-    .immediate  立即结束，不会在锁屏界面停留
+        ② .immediate  立即结束，不会在锁屏界面停留
 
 
 
