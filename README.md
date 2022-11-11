@@ -1,6 +1,7 @@
 手把手实现IOS灵动岛教程。
 
 <img src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/0c68f567ce664e5497f232ac83c54911~tplv-k3u1fbpfcp-zoom-in-crop-mark:3024:0:0:0.image?" width="50%"><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/6e4c39ac487e49f48421ba931a867031~tplv-k3u1fbpfcp-zoom-in-crop-mark:3024:0:0:0.image?" width="50%">
+<img src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/7f79483c39144d458d2831b5a77a24d6~tplv-k3u1fbpfcp-zoom-in-crop-mark:3024:0:0:0.image?" width="100%">
 
 
 详细文档见：[这里是图文教程文档](https://juejin.cn/post/7164296831290048549)
@@ -9,7 +10,9 @@
 
 Live Activities 依赖于 Widget 实现 函数和页面，而与Widget不同，Live Activities无法访问网络或接收位置更新，更新Live Activities可以使用ActivityKit和远程推送，同时ActivityKit可以控制Live Activities的开始，更新和结束。
 
-灵动岛的启用由我们进行控制，且一个程序可以实现多个灵动岛，但启用最多展示两个
+    ① 灵动岛的启用由我们进行控制，且一个程序可以实现多个灵动岛，但启用最多展示两个
+    ② 更新Live activity的数据不能超过4kb（无论是本地或remote）
+    ③ 灵动岛最大高度160，超出将被裁剪
 
 **灵动岛一共有三种样式展示：**
 

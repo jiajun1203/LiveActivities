@@ -7,7 +7,7 @@
 		<key>Jbgz_ActivityExtension.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>1</integer>
+			<integer>0</integer>
 		</dict>
 		<key>LiveActivityTestExtension.xcscheme_^#shared#^_</key>
 		<dict>
@@ -17,12 +17,25 @@
 		<key>Test_LiveActivities.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>0</integer>
+			<integer>1</integer>
 		</dict>
 		<key>testLiveActivityExtension.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>0</integer>
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>046F5C2B291A34F700DC0342</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>04E2BB29291B887300EC76C1</key>
+		<dict>
+			<key>primary</key>
+			<true/>
 		</dict>
 	</dict>
 </dict>
