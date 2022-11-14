@@ -67,7 +67,7 @@ Live Activities 依赖于 Widget 实现 函数和页面，而与Widget不同，L
 
         ⑥ 设置推送的报头apns-topic的值为<your bundleID>.push-type.liveactivity
 
-        ⑦ 正确的推送对应的内容和状态ba8babsssba
+        ⑦ 正确的推送对应的内容和状态
 
         ⑧ 使用pushTokenUpdates监听pushToken变化，如有变化，就令牌失效，需要将新的令牌传给服务器
 
