@@ -69,7 +69,7 @@ Live Activities 依赖于 Widget 实现 函数和页面，而与Widget不同，L
 
         ⑦ 正确的推送对应的内容和状态
 
-        ⑧ 使用pushTokenUpdates监听pushToken变化，如有变化，就令牌失效，需要将新的令牌传给服务器
+        ⑧ 使用pushTokenUpdates监听pushToken变化，如有变化，旧令牌失效，需要将新的令牌传给服务器
 
         ⑨ 当Activity结束时，服务器端的pushToken将失效
 
