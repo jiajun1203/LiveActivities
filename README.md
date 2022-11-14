@@ -3,6 +3,7 @@
 <img src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/0c68f567ce664e5497f232ac83c54911~tplv-k3u1fbpfcp-zoom-in-crop-mark:3024:0:0:0.image?" width="50%"><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/6e4c39ac487e49f48421ba931a867031~tplv-k3u1fbpfcp-zoom-in-crop-mark:3024:0:0:0.image?" width="50%">
 <img src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/7f79483c39144d458d2831b5a77a24d6~tplv-k3u1fbpfcp-zoom-in-crop-mark:3024:0:0:0.image?" width="100%">
 
+demo带有三种状态(待取货，运送中，已完成)，对应锁屏（不支持灵动岛设备）的三种样式，点击界面更新（循环）切换状态。
 
 详细文档见：[这里是图文教程文档](https://juejin.cn/post/7164296831290048549)
 
