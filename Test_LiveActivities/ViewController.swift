@@ -9,7 +9,7 @@ import UIKit
 import ActivityKit
 import SwiftUI
 class ViewController: UIViewController {
-    
+    var status : Int = 1
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -34,7 +34,7 @@ class ViewController: UIViewController {
         //初始化静态数据
         let pizzaDeliveryAttributes = PizzaDeliveryAttributes(numberOfPizzas: 5, totalAmount:"￥99", orderNumber: "23456")
         //初始化动态数据
-        let initialContentState = PizzaDeliveryAttributes.PizzaDeliveryStatus(driverName: "快递小哥 🚴🏻", deliveryTimer: Date()...Date().addingTimeInterval(15 * 60))
+        let initialContentState = PizzaDeliveryAttributes.PizzaDeliveryStatus(driverName: "小旋风 🚴🏻",driverStatus: status , deliveryTimer: Date()...Date().addingTimeInterval(15 * 60))
                                                   
         do {
             //启用灵动岛
@@ -51,6 +51,7 @@ class ViewController: UIViewController {
             if deliveryActivity.activityState == .active{
                 _ = deliveryActivity.pushToken
             }
+//            deliveryActivity.pushTokenUpdates //监听token变化
             print("Current activity id -> \(deliveryActivity.id)")
         } catch (let error) {
             print("Error info -> \(error.localizedDescription)")
@@ -59,7 +60,11 @@ class ViewController: UIViewController {
     
     func updateDeliveryPizza() {
         Task {
-            let updatedDeliveryStatus = PizzaDeliveryAttributes.PizzaDeliveryStatus(driverName: "快递小哥 🚴🏻", deliveryTimer: Date()...Date().addingTimeInterval(60 * 60))
+            status += 1
+            if status > 3 {
+                status = 1
+            }
+            let updatedDeliveryStatus = PizzaDeliveryAttributes.PizzaDeliveryStatus(driverName: "小旋风 🚴🏻",driverStatus: status ,deliveryTimer: Date()...Date().addingTimeInterval(60 * 60))
             //此处只有一个灵动岛，当一个项目有多个灵动岛时，需要判断更新对应的activity
             for activity in Activity<PizzaDeliveryAttributes>.activities{
                 await activity.update(using: updatedDeliveryStatus)

@@ -18,36 +18,97 @@ struct PizzaDeliveryActivityWidget: Widget {
             VStack(alignment: .leading) {
                 HStack {
                     VStack(alignment: .leading) {
-                        Text("你的 \(context.state.driverName) 已在配送中!")
-                            .font(.headline)
-                        ZStack {
+                        if context.state.driverStatus == 1{
+                            Text("快递小哥 \(context.state.driverName) 正准备取餐!")
+                                .font(.headline)
+                        }else if context.state.driverStatus == 2{
+                            Text("\(context.state.driverName)已在路上，🍕即将送达!")
+                                .font(.headline)
+                        }else{
+                            Text("你的订单已签收，请享用🍕")
+                                .font(.headline)
+                        }
+                       
+                        ZStack { 
                             RoundedRectangle(cornerRadius: 15)
-                                .fill(.secondary)
+                                .fill(context.state.driverStatus == 3 ? .blue : .secondary)
+                            
                             HStack {
-                                RoundedRectangle(cornerRadius: 15)
-                                    .fill(.blue)
-                                    .frame(width: 50)
-                                Image(systemName: "shippingbox.circle.fill")
-                                    .foregroundColor(.white)
-                                    .padding(.leading, -25)
-                                Image(systemName: "arrow.forward")
-                                    .foregroundColor(.white.opacity(0.5))
-                                Image(systemName: "ellipsis")
-                                    .foregroundColor(.white.opacity(0.5))
-                                Text(timerInterval: context.state.deliveryTimer, countsDown: true)
-                                    .bold()
-                                    .font(.caption)
-                                    .foregroundColor(.white.opacity(0.8))
-                                    .multilineTextAlignment(.center)
-                                Image(systemName: "ellipsis")
-                                    .foregroundColor(.white.opacity(0.5))
-                                Image(systemName: "arrow.forward")
-                                    .foregroundColor(.white.opacity(0.5))
-                                Image(systemName: "house.circle.fill")
-                                    .foregroundColor(.green)
-                                    .background(.white)
-                                    .clipShape(Circle())
-                            }
+                                //待配送
+                                if context.state.driverStatus == 1{
+                                    RoundedRectangle(cornerRadius: 15)
+                                        .fill(.blue)
+                                        .frame(width: 50)
+                                    Image(systemName: "shippingbox.circle.fill")
+                                        .foregroundColor(.white)
+                                        .padding(.leading, -25)
+                                    Image(systemName: "arrow.forward")
+                                        .foregroundColor(.white.opacity(0.5))
+                                    Image(systemName: "ellipsis")
+                                        .foregroundColor(.white.opacity(0.5))
+                                    Spacer()
+                                    Text(timerInterval: context.state.deliveryTimer, countsDown: true)
+                                        .bold()
+                                        .font(.caption)
+                                        .foregroundColor(.white.opacity(0.8))
+                                        .multilineTextAlignment(.center)
+                                    Spacer()
+                                    Image(systemName: "bicycle").foregroundColor(.white.opacity(0.5))
+                                    
+                                    Image(systemName: "arrow.forward")
+                                        .foregroundColor(.white.opacity(0.5))
+                                    Image(systemName: "house.circle.fill")
+                                        .foregroundColor(.green)
+                                        .background(.white)
+                                        .clipShape(Circle())
+                                }else if context.state.driverStatus >= 2{
+                                    //配送中
+                                    ZStack {
+                                        RoundedRectangle(cornerRadius: 15)
+                                            .fill(.blue)
+                                            .padding(.trailing, 100)
+                                        //配送中
+                                        HStack {
+                                             //1待接单， 2配送中  3已完成
+                                             RoundedRectangle(cornerRadius: 15)
+                                                 .fill(.clear)
+                                                 .frame(width: 50)
+                                             Image(systemName: "shippingbox.circle.fill")
+                                                 .foregroundColor(.white)
+                                                 .padding(.leading, -25)
+                                             Image(systemName: "arrow.forward")
+                                                 .foregroundColor(.white.opacity(0.5))
+                                             Image(systemName: "ellipsis")
+                                                 .foregroundColor(.white.opacity(0.5))
+                                            Spacer()
+                                            if context.state.driverStatus == 3{
+                                                Text("订单已送达")
+                                                    .bold()
+                                                    .font(.caption)
+                                                    .foregroundColor(.white.opacity(0.8))
+                                                    .multilineTextAlignment(.center)
+                                            }else{
+                                                Text(timerInterval: context.state.deliveryTimer, countsDown: true)
+                                                    .bold()
+                                                    .font(.caption)
+                                                    .foregroundColor(.white.opacity(0.8))
+                                                    .multilineTextAlignment(.center)
+                                            }
+                                             
+                                            Spacer()
+                                             Image(systemName: "bicycle").foregroundColor(.white.opacity(0.5))
+                                             
+                                             Image(systemName: "arrow.forward")
+                                                 .foregroundColor(.white.opacity(0.5))
+                                             Image(systemName: "house.circle.fill")
+                                                 .foregroundColor(.green)
+                                                 .background(.white)
+                                                 .clipShape(Circle())
+                                         }
+                                    }
+                                }
+                                
+                             }
                         }
                     }
                     Spacer()
@@ -127,4 +188,8 @@ struct PizzaDeliveryActivityWidget: Widget {
             .keylineTint(.accentColor)
         }
     }
+    
+    
+    
+    
 }

@@ -13,6 +13,7 @@ struct PizzaDeliveryAttributes: ActivityAttributes {
 
     public struct ContentState: Codable, Hashable {
         var driverName: String
+        var driverStatus : Int //1待接单， 2配送中 3已完成
         var deliveryTimer: ClosedRange<Date>
     }
 
